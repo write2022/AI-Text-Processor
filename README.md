@@ -15,6 +15,3 @@
 2. **大模型 API 接入**：使用 `requests` 库独立封装 API 调用模块，通过自定义 System Prompt 实现多语言自动识别与翻译，并处理鉴权与网络异常。
 3. **数据持久化**：使用 MySQL 设计 `messages` 数据表，通过 `PyMySQL` 建立连接，实现参数化 SQL 插入（防注入）与历史记录的可靠读取。
 4. **工程安全化**：敏感配置（API Key 与数据库密码）已在代码中脱敏，符合基本的开发安全规范。
-
-## 🚀 本地运行指南
-*(在此处简写你的运行步骤，比如：1. 安装依赖 pip install flask pymysql requests 2. 配置本地 MySQL 数据库 3. 运行 app.py 4. 打开 index.html)*
