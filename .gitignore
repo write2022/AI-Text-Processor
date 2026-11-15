@@ -4,3 +4,7 @@ __pycache__/
 .env
 test.txt
 test1.txt
+temp.jpg
+vis_result.jpg
+*.jpg
+*.png
