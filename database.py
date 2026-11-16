@@ -5,7 +5,7 @@ def get_conn():
     return pymysql.connect(
         host='localhost',
         user='root',
-        password='填入你的数据库密码',
+        password='填入你的密码',
         database='ai_chat_system',
         charset='utf8mb4'
     )

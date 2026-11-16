@@ -17,7 +17,7 @@ from rapidocr import RapidOCR
 #         return "没识别出文字"
 
 def translate_text(text):
-    api_key="sk-填入你的DeepSeekKey"
+    api_key="sk-填入你的Key"
     url="https://api.deepseek.com/chat/completions"
     headers = {
         "content-type":"application/json; charset=utf-8",

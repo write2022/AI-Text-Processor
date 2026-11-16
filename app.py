@@ -6,6 +6,8 @@ from database import save_message, get_history, create_table
 # from api_client import translate_text, ocr
 from ocr import get_text
 
+from flask import Flask, request, jsonify, send_from_directory
+
 from tasks import worker
 from tasks import task_queue
 
@@ -118,7 +120,10 @@ def history():
         })
     return jsonify(result)
 
-
+# 托管前端静态页面
+@app.route('/')
+def index():
+    return send_from_directory('static', 'index.html')
 if __name__ == '__main__':
     print("🚀 后端服务已启动！")
     # 运行在 5000 端口

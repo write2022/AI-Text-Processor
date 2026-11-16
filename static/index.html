@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -159,11 +160,13 @@
     }
 
     @keyframes dot-pulse {
+
       0%,
       100% {
         opacity: 1;
         transform: scale(1);
       }
+
       50% {
         opacity: 0.45;
         transform: scale(0.8);
@@ -370,12 +373,14 @@
     }
 
     @keyframes typing-bounce {
+
       0%,
       60%,
       100% {
         transform: translateY(0);
         opacity: 0.45;
       }
+
       30% {
         transform: translateY(-4px);
         opacity: 1;
@@ -387,6 +392,7 @@
         opacity: 0;
         transform: translateY(6px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -699,6 +705,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       .message,
       .dot,
       .connection-dot {
@@ -714,6 +721,7 @@
     }
   </style>
 </head>
+
 <body>
   <main class="app">
     <header class="app-header">
@@ -724,13 +732,7 @@
           <p>文字翻译 · 图片 OCR 翻译</p>
         </div>
       </div>
-      <div
-        id="connection"
-        class="connection"
-        data-state="loading"
-        role="status"
-        aria-live="polite"
-      >
+      <div id="connection" class="connection" data-state="loading" role="status" aria-live="polite">
         <span class="connection-dot" aria-hidden="true"></span>
         <span id="connection-label">连接中</span>
       </div>
@@ -742,33 +744,14 @@
         <p id="empty-title">正在加载历史记录…</p>
         <span id="empty-subtitle">请稍候</span>
       </div>
-      <div
-        id="messages"
-        class="messages"
-        role="log"
-        aria-live="polite"
-        aria-relevant="additions"
-      ></div>
+      <div id="messages" class="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
     </section>
 
     <footer class="composer">
       <form id="chat-form" class="composer-box">
-        <button
-          type="button"
-          id="image-button"
-          class="image-button"
-          aria-label="选择图片"
-          title="选择图片"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
+        <button type="button" id="image-button" class="image-button" aria-label="选择图片" title="选择图片">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="5" width="18" height="14" rx="3"></rect>
             <circle cx="8.5" cy="10" r="1.5"></circle>
             <path d="m21 15-4.5-4.5L9 18"></path>
@@ -779,15 +762,8 @@
         <input id="imageInput" type="file" accept="image/*" hidden />
 
         <label class="sr-only" for="message-input">输入要翻译的内容</label>
-        <textarea
-          id="message-input"
-          rows="1"
-          maxlength="5000"
-          placeholder="输入要翻译的内容…"
-          autocomplete="off"
-          spellcheck="false"
-          enterkeyhint="send"
-        ></textarea>
+        <textarea id="message-input" rows="1" maxlength="5000" placeholder="输入要翻译的内容…" autocomplete="off"
+          spellcheck="false" enterkeyhint="send"></textarea>
 
         <button id="send-button" class="send-button" type="submit">发送</button>
       </form>
@@ -802,7 +778,8 @@
     (() => {
       "use strict";
 
-      const API_BASE = "http://127.0.0.1:5000";
+      const API_BASE = "";
+      //const API_BASE = "http://127.0.0.1:5000";
       const QUEUE_REPLY = "消息已进入队列";
       const POLL_INTERVAL = 2000;
 
@@ -1009,7 +986,7 @@
           const parsed = parseTime(time);
           if (parsed) {
             timeEl.dateTime = parsed.toISOString();
-            timeEl.title = parsed.toLocaleString("zh-CN", { hour12: false });
+            timeEl.title = parsed.toLocaleString("zh-CN", {hour12: false});
           }
 
           wrap.appendChild(timeEl);
@@ -1051,7 +1028,7 @@
         const parsed = parseTime(time);
         if (parsed) {
           timeEl.dateTime = parsed.toISOString();
-          timeEl.title = parsed.toLocaleString("zh-CN", { hour12: false });
+          timeEl.title = parsed.toLocaleString("zh-CN", {hour12: false});
         }
       }
 
@@ -1080,7 +1057,7 @@
           () => {
             scrollToBottom("auto");
           },
-          { once: true }
+          {once: true}
         );
 
         bubble.appendChild(image);
@@ -1349,7 +1326,7 @@
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ text }),
+            body: JSON.stringify({text}),
           });
 
           if (!response.ok) {
@@ -1583,4 +1560,5 @@
     })();
   </script>
 </body>
+
 </html>
