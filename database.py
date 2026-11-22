@@ -1,14 +1,30 @@
 import pymysql
+import os
 
+
+#qihang postgre oracle
 # 1. 提取一个获取连接的公共方法，方便复用
 def get_conn():
+    # return pymysql.connect(
+    #     host='localhost',
+    #     user='root',
+    #     password='123456',
+    #     database='ai_chat_system',
+    #     charset='utf8mb4'
+    # )
+    # 改动：优先读环境变量，没有就默认localhost（适配你原来本地Navicat）
+    host = os.getenv("DB_HOST", "localhost")
+    user = os.getenv("DB_USER", "root")
+    password = os.getenv("DB_PASSWORD", "123456")
+    database = os.getenv("DB_NAME", "ai_chat_system")
     return pymysql.connect(
-        host='localhost',
-        user='root',
-        password='填入你的密码',
-        database='ai_chat_system',
+        host=host,
+        user=user,
+        password=password,
+        database=database,
         charset='utf8mb4'
     )
+
 
 # 2. 建表方法
 def create_table():

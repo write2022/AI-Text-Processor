@@ -1,10 +1,38 @@
-.idea/
-__pycache__/
-*.pyc
+#.idea/
+#__pycache__/
+#*.pyc
+#.env
+#test.txt
+#test1.txt
+#temp.jpg
+#vis_result.jpg
+#*.jpg
+#*.png
+
+
+# 环境变量与密钥
 .env
-test.txt
-test1.txt
-temp.jpg
-vis_result.jpg
-*.jpg
-*.png
+.env.local
+.env.*.local
+
+# Python 字节码
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 打包产物
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
