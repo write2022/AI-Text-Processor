@@ -108,21 +108,21 @@ def create_pg_table():
 
 
 # 2. 建表方法
-def create_table():
-    conn = get_conn()
-    cursor = conn.cursor()
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS messages (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        user_input TEXT NOT NULL,
-        ai_reply TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
-    conn.commit()
-    cursor.close()
-    conn.close()
-    print("表建好了，去 Navicat 刷新看看")
+# def create_table():
+#     conn = get_conn()
+#     cursor = conn.cursor()
+#     cursor.execute("""
+#     CREATE TABLE IF NOT EXISTS messages (
+#         id INT AUTO_INCREMENT PRIMARY KEY,
+#         user_input TEXT NOT NULL,
+#         ai_reply TEXT NOT NULL,
+#         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#     )
+#     """)
+#     conn.commit()
+#     cursor.close()
+#     conn.close()
+#     print("表建好了，去 Navicat 刷新看看")
 
 #"登记一个刚开始的任务"，它的语义被写死在名字里：状态必然是 pending，结果必然是空。让调用方能传 status，就等于允许出现"任务还没跑，状态已经是 done"这种自相矛盾的数据
 def create_pending_task(task_id, source_text, target_lang):
@@ -173,26 +173,27 @@ def get_task_by_id(task_id):
 
 
 # 3. 保存聊天记录的方法（把用户的话和 AI 的话存进去）
-def save_message(user_text, ai_text):
-    conn = get_conn()
-    cursor = conn.cursor()
-    sql = "INSERT INTO messages (user_input, ai_reply) VALUES (%s, %s)"
-    cursor.execute(sql, (user_text, ai_text))
-    conn.commit()
-    cursor.close()
-    conn.close()
+# def save_message(user_text, ai_text):
+#     conn = get_conn()
+#     cursor = conn.cursor()
+#     sql = "INSERT INTO messages (user_input, ai_reply) VALUES (%s, %s)"
+#     cursor.execute(sql, (user_text, ai_text))
+#     conn.commit()
+#     cursor.close()
+#     conn.close()
 
-# 4. 读取历史记录的方法
-def get_history():
-    conn = get_conn()
-    cursor = conn.cursor()
-    sql = "SELECT user_input, ai_reply, created_at FROM messages ORDER BY id DESC"
-    cursor.execute(sql)
-    results = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return results
+# 4. create_table,读取历史记录的方法
+# def get_history():
+#     conn = get_conn()
+#     cursor = conn.cursor()
+#     sql = "SELECT user_input, ai_reply, created_at FROM messages ORDER BY id DESC"
+#     cursor.execute(sql)
+#     results = cursor.fetchall()
+#     cursor.close()
+#     conn.close()
+#     return results
+
 if __name__ == "__main__":
 
     create_pg_table()
-    create_table()
+    # create_table()

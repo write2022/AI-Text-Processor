@@ -1,38 +1,44 @@
-#.idea/
-#__pycache__/
-#*.pyc
-#.env
-#test.txt
-#test1.txt
-#temp.jpg
-#vis_result.jpg
-#*.jpg
-#*.png
+# 虚拟环境（你现在是 .venv）
+.venv/
+venv/
+env/
 
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# 环境变量与密钥
+# 本地环境配置（重点！防止 DeepSeek API Key 提交）
 .env
 .env.local
 .env.*.local
 
-# Python 字节码
-__pycache__/
-*.py[cod]
-*$py.class
+# 日志
+*.log
+logs/
 
-# 打包产物
-build/
-dist/
-*.egg-info/
-
-# IDE
+# VSCode / IDE
 .vscode/
 .idea/
 *.swp
+*.swo
 
-# 系统文件
+# 操作系统垃圾
 .DS_Store
 Thumbs.db
-
-# 日志
-*.log

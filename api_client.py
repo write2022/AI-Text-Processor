@@ -3,6 +3,8 @@ import json
 from rapidocr import RapidOCR
 
 
+#`raise` = 手动制造一个错误，让外层的 `except` 去接住它，而不是在这里直接返回错误文字。
+
 # def ocr(image_path):
 #     # 1. 启动引擎
 #     engine = RapidOCR()
@@ -17,7 +19,7 @@ from rapidocr import RapidOCR
 #         return "没识别出文字"
 
 def translate_text(text):
-    api_key="sk-99e9f482fe9a4bf59f4a366e40b56d80"
+    api_key="sk-填入你的Key"
     url="https://api.deepseek.com/chat/completions"
     headers = {
         "content-type":"application/json; charset=utf-8",
@@ -38,15 +40,28 @@ def translate_text(text):
             data=json.dumps(data, ensure_ascii=False).encode('utf-8'),
             timeout=30
         )
-        if response.status_code == 200:
-            result = response.json()
-            return result['choices'][0]['message']['content']
-        else:
-            return f"API请求失败，状态码：{response.status_code}"
-    except Exception as e:
-        return f"网络请求出错：{e}"
+        # if response.status_code == 200:
+        #     result = response.json()
+        #     return result['choices'][0]['message']['content']
+        # else:
+        #     return f"API请求失败，状态码：{response.status_code}"
 
+    except requests.RequestException as e:
+        raise RuntimeError(f"网络请求出错：{e}") from e
 
+    # except Exception as e:
+    #     return f"网络请求出错：{e}"
+
+    #  HTTP 非 200：抛（原来这里是 return 错误串）
+    #HTTP 返回了、但状态码不是 200	这不是"异常"，是你主动判断后 raise，不需要 try 包
+    if response.status_code != 200:
+        raise RuntimeError(f"API 请求失败，状态码：{response.status_code}")
+
+    try:
+        result = response.json()
+        return result['choices'][0]['message']['content']
+    except (ValueError, KeyError, IndexError) as e:
+        raise RuntimeError(f"API 响应结构异常：{e}") from e
 
 #测试
 

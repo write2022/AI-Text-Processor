@@ -13,7 +13,7 @@ VHOST = '/'
 EXCHANGE_NAME = 'translate.exchange'
 TASK_QUEUE = 'translate.task'
 
-DEEPSEEK_API_KEY = "sk"
+DEEPSEEK_API_KEY = "sk-填入你的Key"
 DEEPSEEK_URL = "https://api.deepseek.com/v1/chat/completions"
 
 def translate(text, target_lang="English"):
